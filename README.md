@@ -334,7 +334,7 @@ Behind this project is a passionate team dedicated to building practical softwar
 
 ---
 
-### 👨‍💻 Author
+## 👨‍💻 Author
 
 **Ratul Hasan Nirjon** (`@nirjon001`)
 
@@ -343,3 +343,9 @@ Developed as part of a Hostel/Mess Management System project.
 ---
 
 ⭐ If you found this project helpful, consider giving it a star!
+
+---
+
+Version: 2.0
+
+Last Updated: Jun 6, 2026

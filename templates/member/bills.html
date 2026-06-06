@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>My Utility Bills</h2>
+<div id="billsContent"></div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/member.js') }}"></script>
+<script>loadBills();</script>
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Members Management</h2>
+<div class="card mb-4">
+    <div class="card-header"><h5 class="mb-0" id="memberFormTitle">Add New Member</h5></div>
+    <div class="card-body">
+        <form id="memberForm">
+            <input type="hidden" id="editMemberId" value="">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label">Member Name</label>
+                    <input type="text" class="form-control" id="memberName" required>
+                </div>
+                <div class="col-md-4" id="userSelectGroup">
+                    <label class="form-label">Select User</label>
+                    <select class="form-select" id="memberUserId" required>
+                        <option value="">-- Select User --</option>
+                    </select>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Phone</label>
+                    <input type="text" class="form-control" id="memberPhone" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Occupation</label>
+                    <input type="text" class="form-control" id="memberOccupation" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">District</label>
+                    <input type="text" class="form-control" id="memberDistrict" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Reg Date</label>
+                    <input type="date" class="form-control" id="memberRegDate" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Gender</label>
+                    <select class="form-select" id="memberGender">
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                    </select>
+                </div>
+                <div class="col-md-4" id="memberStatusGroup" style="display:none;">
+                    <label class="form-label">Status</label>
+                    <select class="form-select" id="memberStatus">
+                        <option value="active">Active</option>
+                        <option value="inactive">Inactive</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3" id="memberSubmitBtn">Add Member</button>
+            <button type="button" class="btn btn-secondary mt-3" id="memberCancelBtn" style="display:none;" onclick="cancelMemberEdit()">Cancel</button>
+        </form>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header"><h5 class="mb-0">All Members</h5></div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead><tr><th>ID</th><th>Name</th><th>Phone</th><th>Occupation</th><th>District</th><th>Room</th><th>Reg Date</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="membersTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+<script>loadMembers();</script>
+{% endblock %}

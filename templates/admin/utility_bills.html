@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Utility Bills Management</h2>
+<div class="card mb-4">
+    <div class="card-header"><h5 class="mb-0">Add Utility Bill</h5></div>
+    <div class="card-body">
+        <form id="billForm">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label">Month/Year</label>
+                    <input type="month" class="form-control" id="billMonth" name="bill_month" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Due Date</label>
+                    <input type="date" class="form-control" id="billDueDate" name="due_date" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Bill Type</label>
+                    <select class="form-select" id="billType" name="bill_type">
+                        <option value="electricity">Electricity</option>
+                        <option value="water">Water</option>
+                        <option value="gas">Gas</option>
+                        <option value="internet">Internet</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Amount (BDT)</label>
+                    <input type="number" step="0.01" class="form-control" id="billAmount" name="amount" min="0" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Room</label>
+                    <select class="form-select" id="billRoomId" name="room_id" required>
+                        <option value="">-- Select --</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Add Bill</button>
+        </form>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header"><h5 class="mb-0">All Utility Bills</h5></div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead><tr><th>ID</th><th>Month</th><th>Room</th><th>Type</th><th>Amount</th><th>Due Date</th><th>Status</th><th>Actions</th></tr></thead>
+                <tbody id="billsTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+<script>loadUtilityBills();</script>
+{% endblock %}

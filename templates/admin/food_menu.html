@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Food Menu Management</h2>
+<div class="card mb-4">
+    <div class="card-header"><h5 class="mb-0">Add Food Item</h5></div>
+    <div class="card-body">
+        <form id="foodMenuForm">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label class="form-label">Date</label>
+                    <input type="date" class="form-control" id="menuDate" name="menu_date" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Item Name</label>
+                    <input type="text" class="form-control" id="menuItem" name="item" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Price (BDT)</label>
+                    <input type="number" step="0.01" class="form-control" id="menuPrice" name="price" min="0" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="form-label">Meal Type</label>
+                    <select class="form-select" id="menuMealType" name="meal_type">
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                    </select>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Add to Menu</button>
+        </form>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header"><h5 class="mb-0">Menu Items (Last 7 Days)</h5></div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead><tr><th>ID</th><th>Date</th><th>Item</th><th>Price</th><th>Meal Type</th><th>Status</th></tr></thead>
+                <tbody id="foodMenuTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+<script>loadFoodMenu();</script>
+{% endblock %}

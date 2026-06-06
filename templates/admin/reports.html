@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Reports</h2>
+<ul class="nav nav-tabs mb-4" id="reportTabs">
+    <li class="nav-item"><button class="nav-link active" data-target="membersReport">Members</button></li>
+    <li class="nav-item"><button class="nav-link" data-target="paymentsReport">Payments</button></li>
+    <li class="nav-item"><button class="nav-link" data-target="roomsReport">Rooms</button></li>
+    <li class="nav-item"><button class="nav-link" data-target="foodReport">Food Orders</button></li>
+</ul>
+
+<div id="membersReport" class="report-section">
+    <div class="card">
+        <div class="card-header"><h5 class="mb-0">All Members</h5></div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead><tr><th>ID</th><th>Name</th><th>Phone</th><th>Occupation</th><th>District</th><th>Status</th></tr></thead>
+                    <tbody id="reportMembersBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="paymentsReport" class="report-section" style="display:none;">
+    <div class="card">
+        <div class="card-header"><h5 class="mb-0">All Payments</h5></div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead><tr><th>ID</th><th>Date</th><th>Member</th><th>Amount</th><th>Method</th><th>Type</th><th>Status</th></tr></thead>
+                    <tbody id="reportPaymentsBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="roomsReport" class="report-section" style="display:none;">
+    <div class="card">
+        <div class="card-header"><h5 class="mb-0">Rooms Summary</h5></div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead><tr><th>ID</th><th>Room No</th><th>Building</th><th>Type</th><th>Rent</th><th>Status</th></tr></thead>
+                    <tbody id="reportRoomsBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="foodReport" class="report-section" style="display:none;">
+    <div class="card">
+        <div class="card-header"><h5 class="mb-0">Food Orders</h5></div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead><tr><th>ID</th><th>Member</th><th>Item</th><th>Qty</th><th>Total</th><th>Date</th><th>Status</th></tr></thead>
+                    <tbody id="reportFoodBody"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+<script>loadReports();</script>
+<script>
+document.querySelectorAll('#reportTabs .nav-link').forEach(btn => {
+    btn.addEventListener('click', function() {
+        document.querySelectorAll('#reportTabs .nav-link').forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        document.querySelectorAll('.report-section').forEach(s => s.style.display = 'none');
+        document.getElementById(this.dataset.target).style.display = 'block';
+    });
+});
+</script>
+{% endblock %}

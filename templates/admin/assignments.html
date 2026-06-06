@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Room Assignments</h2>
+<div class="card mb-4">
+    <div class="card-header"><h5 class="mb-0">Assign Room to Member</h5></div>
+    <div class="card-body">
+        <form id="assignForm">
+            <div class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label">Member</label>
+                    <select class="form-select" id="assignMemberId" name="member_id" required>
+                        <option value="">-- Select --</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Room</label>
+                    <select class="form-select" id="assignRoomId" name="room_id" required onchange="updateRent()">
+                        <option value="">-- Select --</option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Check-in Date</label>
+                    <input type="date" class="form-control" id="assignCheckIn" name="check_in" required>
+                </div>
+                <div class="col-md-3">
+                    <label class="form-label">Monthly Rent (BDT)</label>
+                    <input type="number" step="0.01" class="form-control" id="assignRent" name="monthly_rent" required>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary mt-3">Assign Room</button>
+        </form>
+    </div>
+</div>
+<div class="card">
+    <div class="card-header"><h5 class="mb-0">Current Assignments</h5></div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead><tr><th>ID</th><th>Member</th><th>Room</th><th>Check-in</th><th>Rent</th><th>Actions</th></tr></thead>
+                <tbody id="assignmentsTableBody"></tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+<script>loadAssignments();</script>
+{% endblock %}

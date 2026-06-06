@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>My Dashboard</h2>
+<div class="stats-grid" id="memberStatsGrid"></div>
+<div id="memberRoomInfo"></div>
+{% endblock %}
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/member.js') }}"></script>
+<script>loadDashboard();</script>
+{% endblock %}

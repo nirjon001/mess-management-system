@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>Mess Management</title>
+</head>
+<body>
+    <div class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h3>Mess Manager</h3>
+            <button class="sidebar-close" id="sidebarClose">&times;</button>
+        </div>
+        <div class="sidebar-user">
+            <i class="fas fa-user-circle"></i>
+            <span>{{ username }}</span>
+            <span class="role-badge {% if session.role == 'admin' %}role-admin{% else %}role-member{% endif %}">
+                {{ session.role }}
+            </span>
+        </div>
+        <nav class="sidebar-nav" id="sidebarNav"></nav>
+        <div class="sidebar-footer">
+            <a href="{{ url_for('logout') }}" class="logout-link">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </div>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <div class="main-content" id="mainContent">
+        <header class="topbar">
+            <button class="hamburger" id="hamburgerBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <h4 class="page-title" id="pageTitle">Mess Management System</h4>
+        </header>
+
+        <div id="alertBox"></div>
+
+        <div class="container-fluid px-4" id="pageContent">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const SIDEBAR_LINKS = {
+            admin: [
+                { label: 'Dashboard', icon: 'fa-tachometer-alt', url: '/admin/dashboard' },
+                { label: 'Members', icon: 'fa-users', url: '/admin/members' },
+                { label: 'Rooms', icon: 'fa-door-open', url: '/admin/rooms' },
+                { label: 'Assignments', icon: 'fa-key', url: '/admin/assignments' },
+                { label: 'Food Menu', icon: 'fa-utensils', url: '/admin/food-menu' },
+                { label: 'Utility Bills', icon: 'fa-file-invoice', url: '/admin/utility-bills' },
+                { label: 'Payments', icon: 'fa-money-bill-wave', url: '/admin/payments' },
+                { label: 'Reports', icon: 'fa-chart-bar', url: '/admin/reports' }
+            ],
+            member: [
+                { label: 'Dashboard', icon: 'fa-tachometer-alt', url: '/member/dashboard' },
+                { label: 'My Bills', icon: 'fa-file-invoice', url: '/member/bills' },
+                { label: 'Make Payment', icon: 'fa-money-bill-wave', url: '/member/payments' },
+                { label: 'Book Food', icon: 'fa-utensils', url: '/member/food-booking' },
+                { label: 'My Expenses', icon: 'fa-chart-pie', url: '/member/expenses' }
+            ]
+        };
+
+        function showAlert(msg, type) {
+            const box = document.getElementById('alertBox');
+            box.className = type === 'success' ? 'alert alert-success' : 'alert alert-danger';
+            box.innerHTML = msg;
+            box.style.display = 'block';
+            setTimeout(() => { box.style.display = 'none'; }, 3500);
+            window.scrollTo(0, 0);
+        }
+
+        function getToday() {
+            return new Date().toISOString().split('T')[0];
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            const hamburger = document.getElementById('hamburgerBtn');
+            const closeBtn = document.getElementById('sidebarClose');
+            const nav = document.getElementById('sidebarNav');
+            const role = '{{ session.role }}';
+            const links = SIDEBAR_LINKS[role] || [];
+            const currentPath = window.location.pathname;
+
+            nav.innerHTML = links.map(l => `
+                <a href="${l.url}" class="sidebar-link ${currentPath === l.url ? 'active' : ''}">
+                    <i class="fas ${l.icon}"></i> ${l.label}
+                </a>
+            `).join('');
+
+            function toggleSidebar() {
+                sidebar.classList.toggle('open');
+                overlay.classList.toggle('show');
+                document.getElementById('mainContent').classList.toggle('sidebar-open');
+            }
+
+            hamburger.addEventListener('click', toggleSidebar);
+            closeBtn.addEventListener('click', toggleSidebar);
+            overlay.addEventListener('click', toggleSidebar);
+        });
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

@@ -16,43 +16,6 @@ Manage rooms, members, rent, food bookings, utility bills, and payments from a s
 
 ---
 
-## 📸 Screenshots
-
-<details>
-<summary>🔐 Login</summary>
-
-![Login](screenshots/login.png)
-
-</details>
-
-<details>
-<summary>👨‍💼 Admin Panel</summary>
-
-![Admin Dashboard](screenshots/admin_dashboard.png)
-
-![Admin Sidebar](screenshots/admin_sidebar.png)
-
-![Admin Member Management](screenshots/admin_member_management.png)
-
-![Admin Payment](screenshots/admin_payment.png)
-
-</details>
-
-<details>
-<summary>👤 Member Panel</summary>
-
-![Member Login](screenshots/member_login.png)
-
-![Member Dashboard](screenshots/member_dashboard.png)
-
-![Member Payment](screenshots/member_payment.png)
-
-![Member Book Food](screenshots/member_bookfood.png)
-
-![Member Expense](screenshots/member_expense.png)
-
-</details>
-
 ## ✨ Features
 
 ### 👨‍💼 Admin Panel
@@ -272,15 +235,41 @@ After logging in, visit:
 
 ## 📸 Screenshots
 
-Add screenshots here:
+<details>
+<summary>🔐 Login</summary>
 
-```md
-![Dashboard](screenshots/dashboard.png)
+![Login](screenshots/login.png)
 
-![Members](screenshots/members.png)
+</details>
 
-![Food Booking](screenshots/food-booking.png)
-```
+<details>
+<summary>👨‍💼 Admin Panel</summary>
+
+![Admin Dashboard](screenshots/admin_dashboard.png)
+
+![Admin Sidebar](screenshots/admin_sidebar.png)
+
+![Admin Member Management](screenshots/admin_member_management.png)
+
+![Admin Payment](screenshots/admin_payment.png)
+
+</details>
+
+<details>
+<summary>👤 Member Panel</summary>
+
+![Member Login](screenshots/member_login.png)
+
+![Member Dashboard](screenshots/member_dashboard.png)
+
+![Member Payment](screenshots/member_payment.png)
+
+![Member Book Food](screenshots/member_bookfood.png)
+
+![Member Expense](screenshots/member_expense.png)
+
+</details>
+
 
 ---
 

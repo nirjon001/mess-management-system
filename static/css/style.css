@@ -5,6 +5,8 @@ body {
     background: #f0f2f5;
     color: #333;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 /* ==================== AUTH ==================== */
@@ -12,14 +14,18 @@ body {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
 }
 
 .auth-container {
     width: 100%;
     max-width: 420px;
     padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
 }
 
 .auth-card {
@@ -174,7 +180,7 @@ body {
 .main-content {
     margin-left: 0;
     transition: margin-left 0.3s ease;
-    min-height: 100vh;
+    flex: 1;
 }
 
 .topbar {
@@ -196,11 +202,30 @@ body {
     cursor: pointer;
     color: #333;
     padding: 5px;
+    flex-shrink: 0;
 }
 
 .hamburger:hover { color: #667eea; }
 
-.page-title { margin: 0; font-size: 1.2rem; color: #2c3e50; }
+.page-title {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #2c3e50;
+    flex: 1;
+    text-align: center;
+    margin-right: 34px;
+    background: linear-gradient(90deg, #667eea, #764ba2, #e94560, #667eea);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shimmer 4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
 
 /* ==================== CARDS ==================== */
 .card {
@@ -242,6 +267,20 @@ body {
 .table { margin-bottom: 0; }
 .table thead { background: #f8f9fa; }
 .table th { font-weight: 600; color: #555; border-top: none; }
+
+/* ==================== PAGE TITLES ==================== */
+#pageContent > h2 {
+    font-weight: 800;
+    color: #fff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 12px 20px;
+    border-radius: 10px;
+    margin-bottom: 24px;
+    font-size: 1.4rem;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    letter-spacing: 0.5px;
+    text-align: center;
+}
 
 /* ==================== ALERTS ==================== */
 #alertBox { display: none; margin-bottom: 20px; }

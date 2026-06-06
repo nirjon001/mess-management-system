@@ -16,6 +16,14 @@ Manage rooms, members, rent, food bookings, utility bills, and payments from a s
 
 ---
 
+## 📸 Screenshots
+
+![Dashboard](screenshots/dashboard.png)
+
+![Members](screenshots/members.png)
+
+![Food Booking](screenshots/food-booking.png)
+
 ## ✨ Features
 
 ### 👨‍💼 Admin Panel

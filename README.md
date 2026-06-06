@@ -18,11 +18,31 @@ Manage rooms, members, rent, food bookings, utility bills, and payments from a s
 
 ## 📸 Screenshots
 
-![Dashboard](screenshots/dashboard.png)
+### 🔐 Login
 
-![Members](screenshots/members.png)
+![Login](screenshots/login.png)
 
-![Food Booking](screenshots/food-booking.png)
+### 👨‍💼 Admin Panel
+
+![Admin Dashboard](screenshots/admin_dashboard.png)
+
+![Admin Sidebar](screenshots/admin_sidebar.png)
+
+![Admin Member Management](screenshots/admin_member_management.png)
+
+![Admin Payment](screenshots/admin_payment.png)
+
+### 👤 Member Panel
+
+![Member Login](screenshots/member_login.png)
+
+![Member Dashboard](screenshots/member_dashboard.png)
+
+![Member Payment](screenshots/member_payment.png)
+
+![Member Book Food](screenshots/member_bookfood.png)
+
+![Member Expense](screenshots/member_expense.png)
 
 ## ✨ Features
 

@@ -321,10 +321,25 @@ This project is licensed under the **MIT License**.
 
 ---
 
-## 👨‍💻 Author
+## 🌟 Meet the Team
 
-**Nirjon**
+Behind this project is a passionate team dedicated to building practical software solutions.
+
+### Core Contributors
+
+* Ratul Hasan Nirjon
+* Nahorin Niti
+* Farhana Hasin
+* Ahmed Abu Talha
+
+---
+
+### 👨‍💻 Author
+
+**Ratul Hasan Nirjon** (`@nirjon001`)
 
 Developed as part of a Hostel/Mess Management System project.
+
+---
 
 ⭐ If you found this project helpful, consider giving it a star!
